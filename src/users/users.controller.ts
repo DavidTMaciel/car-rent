@@ -26,8 +26,10 @@ export class UsersController {
   }
 
   @Get('list-user/:id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  findOne(@Param('id') id: string):Promise<Usermodel> {
+    return this.usersService.findOne({
+      id:Number(id)
+    });
   }
 
   @Patch('update-user/:id')
